@@ -20,7 +20,7 @@ Brief Description of Goal of Code:
 This app asks the user 4 symptom-based questions and estimates whether their symptoms more closely match rosacea or eczema.  
  
 Known Issues:
-blah, blah, blah, blah
+Results do not reset when clicking start over.
 Ignore this error message if you see it using the javaScript console: Error with Permissions-Policy header: Origin trial controlled feature not enabled: 'interest-cohort'.
 
 Goal Code:
@@ -39,49 +39,48 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 	<link rel="stylesheet" href="w3-colors-flat.css">
 </head> 
 
-<script>
+
 
 <head> 
 	<meta charset="UTF-8">
 	<!--makes app responsive on phones-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Rosacea or Eczema</title>	 	 <!--added title-->
-]	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<link rel="stylesheet" href="w3.css">
 	<link rel="stylesheet" href="w3-colors-flat.css">
 </head> 
 
-<script>
+    <script>
 
-	var eczema_count = 0;
-	var rosacea_count = 0;
-
-
-    function eczemaAdd() {
-        eczema_count += 1;
-    }
-
-    function rosaceaAdd() {
-        rosacea_count +=1;
-    }
+	    var eczema_count = 0;
+	    var rosacea_count = 0;
 
 
-	function showResults() {
-        var totalQuestions = 4;
+        function eczemaAdd(){
+            eczema_count = eczema_count + 1;
+
+        }
+
+        function rosaceaAdd(){
+            rosacea_count = rosacea_count + 1;
+        }
+
+
+	function calculateResults() {
 		var eczemaPercent = (eczema_count / 4) * 100;  			   
 		var rosaceaPercent = (rosacea_count / 4) * 100;         
 
 		var resultText = document.getElementById("results");
+
 		resultText.innerHTML = "Probability it is eczema = " + eczemaPercent.toFixed(0) + "%" + 		
 					       "<br> Probability it is rosacea = " + rosaceaPercent.toFixed(0) + "%";        
 	}
 
 </script>
 
-	<!--added Javascript-->
-</script>	
-
+	<!--added Javascript and accounted for my four questions-->
 
 <!-- THIS STYLE CODE HELPS MAKE YOUR APP LOOK GOOD. PROBABLY DONT MESS WITH IT -->
 <style>	
@@ -108,7 +107,7 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 
 <body>
 	
-<!-- added HTML pages -->
+<!-- began adding HTML pages -->
 <div id="home" class="w3-container w3-center w3-padding-64 w3-blue">
 
     <h1>Rosacea or Eczema?</h1>
@@ -124,8 +123,10 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
          class="w3-margin">
 
     <br>
-    <a href="#q2" class="w3-button w3-black w3-round">Get Started</a>
-
+    <a href="#q2" class="w3-button w3-black w3-round">Get Started</a>       <!-- added get started button -->
+<footer class="w3-bottom w3-container w3-flat-carrot">
+		<p>DIY!</p>
+	</footer>       <!-- added footer showing DIY! -->
 </div>
 
 <!-- ============================= -->
@@ -138,11 +139,16 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 
         <p>Does Your Skin Feel Hot or Flushed?</p>
 
-        <a href="#q3" onclick="rosaceaAdd()" class="w3-button w3-green w3-round">Yes</a>
-        <a href="#q3" onclick="eczemaAdd()" class="w3-button w3-green w3-round">No</a>
+        <a href="#q3" onclick="rosaceaAdd()" class="w3-button w3-green w3-round">Yes</a>        <!-- added yes buttons and rosacea function-->
+        <a href="#q3" onclick="eczemaAdd()" class="w3-button w3-red w3-round">No</a>            <!-- added yes buttons and eczema function-->
+<footer class="w3-bottom w3-container w3-flat-carrot">
+		<p>DIY!</p>
+	</footer>       <!-- added footer showing DIY! -->
 
     </div>
 </div>
+<!-- Added Question one where user answers if their skin feels hot or flushed -->
+
 
 <!-- ============================= -->
 <!-- QUESTION 2 -->
@@ -154,11 +160,16 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 
         <p>Does Your Skin Itch?</p>
 
-        <a href="#q4" onclick="rosaceaAdd()" class="w3-button w3-green w3-round">Yes</a>
-        <a href="#q4" onclick="eczemaAdd()" class="w3-button w3-green w3-round">No</a>
+        <a href="#q4" onclick="eczemaAdd()" class="w3-button w3-green w3-round">Yes</a>   <!-- added yes buttons and eczema function-->
+        <a href="#q4" onclick="rosaceaAdd()" class="w3-button w3-red w3-round">No</a>     <!-- added yes buttons and rosacea function-->
+<footer class="w3-bottom w3-container w3-flat-carrot">
+		<p>DIY!</p>         <!-- added footer showing DIY! -->
+	</footer>
 
     </div>
 </div>
+<!-- Added Question two where user answers if their skin feels itchy -->
+
 
 <!-- ============================= -->
 <!-- QUESTION 3 -->
@@ -170,10 +181,16 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 
         <p>Is Your Skin Dry or Flaky?</p>
 
-        <a href="#q5" onclick="rosaceaAdd()" class="w3-button w3-green w3-round">Yes</a>
-        <a href="#q5" onclick="eczemaAdd()" class="w3-button w3-green w3-round">No</a>
+        <a href="#q5" onclick="eczemaAdd()" class="w3-button w3-green w3-round">Yes</a>        <!-- added yes buttons and eczema function-->
+        <a href="#q5" onclick="rosaceaAdd()" class="w3-button w3-red w3-round">No</a>           <!-- added yes buttons and rosacea function-->
+    <footer class="w3-bottom w3-container w3-flat-carrot">
+		<p>DIY!</p>
+	</footer>           <!-- added footer showing DIY! -->
+
     </div>
 </div>
+<!-- Added Question three where user answers if their skin is dry or flaky -->
+
 
 <!-- ============================= -->
 <!-- QUESTION 4 -->
@@ -185,28 +202,32 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 
         <p>Are Your Symptoms Presented Only in Your Face</p>
 
-        <a href="#resultsPage" onclick="rosaceaAdd()" class="w3-button w3-green w3-round">Yes</a>
-        <a href="#resultsPage" onclick="eczemaAdd()" class="w3-button w3-green w3-round">No</a>
+        <a href="#q6" onclick="rosaceaAdd()" class="w3-button w3-green w3-round">Yes</a>      <!-- added yes buttons and rosacea function-->
+		<a href="#q6" onclick="eczemaAdd()" class="w3-button w3-red w3-round">No</a>          <!-- added yes buttons and eczema function-->
+<footer class="w3-bottom w3-container w3-flat-carrot">
+		<p>DIY!</p>
+	</footer>           <!-- added footer showing DIY! -->
 
     </div>
 </div>
+<!-- Added Question four where the user answers if the symptoms are presented only in their face -->
+
 
 <!-- ============================= -->
 <!-- RESULTS PAGE -->
 <!-- ============================= -->
-<div id="resultsPage" class="w3-container w3-padding-64 w3-light-grey">
+<div class="page" id="q6">
+    <div class="w3-container w3-padding-64 w3-light-grey">
+        <h2>Results</h2>
+        <p id="results"></p>
+        <button onclick="calculateResults()" class="w3-button w3-blue">Calculate My Results</button>        <!-- Button runs JavaScript function to calculate percentage -->
+        <br><br>
+        <a href="#home" class="w3-button w3-black">Start Over</a>       <!-- added start over button that leads you to the home page -->
+<footer class="w3-bottom w3-container w3-flat-carrot">
+		<p>DIY!</p>
+	</footer>       <!-- added footer showing DIY! -->
 
-    <h2>Results</h2>
-
-    <p id="results"></p>
-
-    <button onclick="showResults()"class="w3-button w3-blue">
-        Calculate My Results
-    </button>
-
-    <br><br>
-    <a href="#home" class="w3-button w3-black">Start Over</a>
-
+    </div>
 </div>	
 
 </body>
